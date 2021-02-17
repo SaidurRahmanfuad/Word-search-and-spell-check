@@ -10,7 +10,25 @@
       android:id="@+id/seearchview"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      app:layout_constraintTop_toTopOf="parent"/>
+      app:layout_constraintTop_toTopOf="parent" />
+<EditText
+    android:id="@+id/searchtext"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="@string/search_here"
+    android:textColorHint="@color/black"
+    android:textSize="14sp"
+    app:layout_constraintTop_toBottomOf="@+id/seearchview"
+    android:autofillHints=""
+    android:inputType="text" />
+<androidx.recyclerview.widget.RecyclerView
+    android:visibility="gone"
+    android:id="@+id/recyclerWord"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/searchtext"/>
 
   <ListView
       android:id="@+id/listView"
@@ -19,6 +37,6 @@
       app:layout_constraintBottom_toBottomOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintStart_toStartOf="parent"
-      app:layout_constraintTop_toBottomOf="@+id/seearchview" />
+      app:layout_constraintTop_toBottomOf="@+id/recyclerWord" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
