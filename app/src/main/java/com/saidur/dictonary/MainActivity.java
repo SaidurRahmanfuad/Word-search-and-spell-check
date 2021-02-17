@@ -10,6 +10,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.ListView;
 
@@ -21,9 +22,11 @@ SearchView searchView;
 EditText inputText;
 
 ArrayList<WordItem> wordList;
+ArrayAdapter<String> adapter;
 WordAdapter filterAdapter;
 RecyclerView recyclerView;
 private RecyclerView.LayoutManager mLayoutManager;
+private AutoCompleteTextView autoCompleteTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,11 +36,16 @@ private RecyclerView.LayoutManager mLayoutManager;
         searchView=findViewById(R.id.seearchview);
         recyclerView=findViewById(R.id.recyclerWord);
         inputText=findViewById(R.id.searchtext);
-
-        Sysyem1();
-        System2();
-
+        autoCompleteTextView=findViewById(R.id.actv);
         //search
+        Sysyem1();
+        //filter
+        System2();
+        //Autocomplete tv
+        autoCompleteTextView.setAdapter(adapter);
+
+
+
 
 
     }
@@ -48,7 +56,7 @@ private RecyclerView.LayoutManager mLayoutManager;
         word.add("apple"); word.add("apeal");  word.add("apple"); word.add("apple");
         word.add("ball");
 
-        ArrayAdapter<String> adapter=new ArrayAdapter<String>(MainActivity.this,android.R.layout.simple_list_item_1,word);
+        adapter=new ArrayAdapter<String>(MainActivity.this,android.R.layout.simple_list_item_1,word);
         listView.setAdapter(adapter);
         searchView.setQueryHint("Search here");
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
